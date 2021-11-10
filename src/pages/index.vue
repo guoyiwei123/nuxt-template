@@ -1,17 +1,32 @@
 <template>
-  <Tutorial/>
+    <div>
+        <NuxtLink to="/test">test</NuxtLink>
+    </div>
 </template>
 
 <script>
-import {testService} from "@models/test";
 export default {
-    async asyncData({req, res}){
-        const result = await testService();
-        console.log(result);
-        console.log(process.env.NUXT_NODE_ENV);
-        return {};
-    }
-}
-
-
+	async asyncData({store}) {
+        const res = await store.dispatch("test/getNews", {a: 1});
+        console.log(res);
+        return {}
+	},
+	head() {
+		return {
+			title: "1111",
+			meta: [
+				{
+					hid: "description",
+					name: "description",
+					content: "home page",
+				},
+				{
+					hid: "keywords",
+					name: "keywords",
+					content: "keywords",
+				},
+			],
+		};
+	},
+};
 </script>

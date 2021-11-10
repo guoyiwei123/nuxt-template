@@ -1,4 +1,4 @@
-# nuxt-template
+# www.pandahelp.vip官网
 
 ## 命令说明
 
@@ -34,17 +34,39 @@ $ npm run serve
         -   config 配置文件目录
         -   models 服务数据相关目录(包含请求服务端方法)
         -   pages 页面
-        -   services 服务目录
-            -   controllers 控制层逻辑
-            -   router.js 路由配置文件
-            -   index.js 服务启动文件
         -   store 状态树
         -   utils 工具方法目录
 -   static 静态资源目录
+-   apis
+    -   controllers 控制层逻辑
+    -   models 数据层
+    -   utils 工具类
+    -   config.js 配置文件
+    -   index.js 服务启动文件
 -   nuxt.config.js nuxt 配置文件
 -   server.js 启动入口文件
 ```
 
+
+
+
+## apis
+### 路由规则
+```
+规则: ${baseUrl}/[文件名]/[方法名]
+例如: 
+// ~/controllers/test.js
+module.exports = {
+    // 路由: ${baseUrl}/test
+    index: () => {
+
+    },
+    // 路由: ${baseUrl}/news
+    news: () => {
+
+    }
+}
+```
 
 ## 注意事项
 ### 环境变量 `NUXT_NODE_ENV`

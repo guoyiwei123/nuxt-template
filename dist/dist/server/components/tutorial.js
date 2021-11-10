@@ -1,7 +1,7 @@
 exports.ids = [2];
 exports.modules = {
 
-/***/ 22:
+/***/ 24:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -16,7 +16,7 @@ var staticRenderFns = []
 // CONCATENATED MODULE: ./src/components/Tutorial.vue?vue&type=template&id=b9770072&
 
 // EXTERNAL MODULE: ./node_modules/vue-loader/lib/runtime/componentNormalizer.js
-var componentNormalizer = __webpack_require__(2);
+var componentNormalizer = __webpack_require__(3);
 
 // CONCATENATED MODULE: ./src/components/Tutorial.vue
 
@@ -32,7 +32,7 @@ var component = Object(componentNormalizer["a" /* default */])(
   false,
   null,
   null,
-  "7c372b61"
+  "583393d7"
   
 )
 

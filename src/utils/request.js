@@ -4,6 +4,8 @@ axios.defaults.timeout = 15000;
 axios.interceptors.request.use(config => config, err => Promise.reject(err));
 // http response 拦截器
 axios.interceptors.response.use(response => response, err => Promise.reject(err));
+// 配置基础接口
+axios.defaults.baseURL = process.client?"": process.env.baseUrl;
 // get请求
 export const get = async (url, params={}) => {
     const paramsList = [];
