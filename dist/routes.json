@@ -1,16 +1,16 @@
 [
   {
-    "name": "Test",
-    "path": "/Test",
-    "component": "/Users/guoyiwei/www/www.pandahelp.vip-ssr/src/pages/Test.vue",
-    "chunkName": "pages/Test",
-    "_name": "_a17ca718"
+    "name": "test",
+    "path": "/test",
+    "component": "/Users/guoyiwei/Documents/projects/nuxt-template/src/pages/test.vue",
+    "chunkName": "pages/test",
+    "_name": "_69a3cf64"
   },
   {
     "name": "index",
     "path": "/",
-    "component": "/Users/guoyiwei/www/www.pandahelp.vip-ssr/src/pages/index.vue",
+    "component": "/Users/guoyiwei/Documents/projects/nuxt-template/src/pages/index.vue",
     "chunkName": "pages/index",
-    "_name": "_4b510500"
+    "_name": "_38a84f20"
   }
 ]

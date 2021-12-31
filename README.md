@@ -37,37 +37,9 @@ $ npm run serve
         -   store 状态树
         -   utils 工具方法目录
 -   static 静态资源目录
--   apis
-    -   controllers 控制层逻辑
-    -   models 数据层
-    -   utils 工具类
-    -   config.js 配置文件
-    -   index.js 服务启动文件
 -   nuxt.config.js nuxt 配置文件
 -   server.js 启动入口文件
 ```
-
-
-
-
-## apis
-### 路由规则
-```
-规则: ${baseUrl}/[文件名]/[方法名]
-例如: 
-// ~/controllers/test.js
-module.exports = {
-    // 路由: ${baseUrl}/test
-    index: () => {
-
-    },
-    // 路由: ${baseUrl}/news
-    news: () => {
-
-    }
-}
-```
-
 ## 注意事项
 ### 环境变量 `NUXT_NODE_ENV`
 由于在执行过程中,nuxt会把NODE_ENV强制赋予`production`,导致接口配置无法区分正式和测试环境，这里新建使用自定义字段`NUXT_NODE_ENV`

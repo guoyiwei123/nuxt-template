@@ -54,7 +54,7 @@ module.exports = {
     },
     // 服务器端渲染中间件
     serverMiddleware: [
-        { path: '/api', handler: resolve(__dirname, "./apis/index.js") },
+        // { path: '/api', handler: resolve(__dirname, "./apis/index.js") },
         { path: '/static', handler: serveStatic(__dirname + '/static') }
     ],
     // css配置
@@ -72,5 +72,18 @@ module.exports = {
     // 环境变量
     env: {
         baseUrl: process.env.BASE_URL || `http://localhost:${port}${basePath}`
+    },
+    // 模块
+    modules: [
+        "@nuxtjs/axios"
+    ],
+    plugins: [
+        '~/plugins/axios'
+    ],
+    axios: {
+        proxy: true // Can be also an object with default options
+    },
+    proxy: {
+        "/api/test/": {target: "http://abbos.api.tongbu.com/web/responsive", pathRewrite: {"^/api/test": ""}}
     }
 }

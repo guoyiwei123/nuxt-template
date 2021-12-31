@@ -1,6 +1,7 @@
 <template>
     <div>
         <NuxtLink to="/test">test</NuxtLink>
+        <button @click="getData"> get data </button>
     </div>
 </template>
 
@@ -8,8 +9,9 @@
 export default {
 	async asyncData({store}) {
         const res = await store.dispatch("test/getNews", {a: 1});
-        console.log(res);
-        return {}
+        return {
+            testData: res
+        }
 	},
 	head() {
 		return {
@@ -28,5 +30,15 @@ export default {
 			],
 		};
 	},
+    mounted() {
+        console.log(this.testData);
+    },
+    methods: {
+        getData(){
+            this.$store.dispatch("test/getNews", {a: 1}).then(res => {
+                console.log(res);
+            });
+        }
+    },
 };
 </script>

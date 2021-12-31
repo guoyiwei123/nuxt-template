@@ -43,7 +43,7 @@ module.exports =
 /******/
 /******/ 		// "0" is the signal for "already loaded"
 /******/ 		if(installedChunks[chunkId] !== 0) {
-/******/ 			var chunk = require("./" + ({"1":"components/nuxt-logo","2":"components/tutorial","3":"pages/Test","4":"pages/index"}[chunkId]||chunkId) + ".js");
+/******/ 			var chunk = require("./" + ({"1":"components/nuxt-logo","2":"components/tutorial","3":"pages/index","4":"pages/test"}[chunkId]||chunkId) + ".js");
 /******/ 			var moreModules = chunk.modules, chunkIds = chunk.ids;
 /******/ 			for(var moduleId in moreModules) {
 /******/ 				modules[moduleId] = moreModules[moduleId];
@@ -115,7 +115,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 12);
+/******/ 	return __webpack_require__(__webpack_require__.s = 13);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -132,12 +132,6 @@ module.exports = require("ufo");
 
 /***/ }),
 /* 2 */
-/***/ (function(module, exports) {
-
-module.exports = require("axios");
-
-/***/ }),
-/* 3 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -243,10 +237,16 @@ function normalizeComponent (
 
 
 /***/ }),
-/* 4 */
+/* 3 */
 /***/ (function(module, exports) {
 
 module.exports = require("vuex");
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports) {
+
+module.exports = require("axios");
 
 /***/ }),
 /* 5 */
@@ -300,14 +300,20 @@ module.exports = require("vue-meta");
 
 /***/ }),
 /* 12 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-__webpack_require__(13);
-module.exports = __webpack_require__(19);
-
+module.exports = require("defu");
 
 /***/ }),
 /* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(14);
+module.exports = __webpack_require__(21);
+
+
+/***/ }),
+/* 14 */
 /***/ (function(module, exports) {
 
 global.installComponents = function (component, components) {
@@ -351,7 +357,7 @@ function provideFunctionalComponents(component, components) {
 
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -362,7 +368,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -373,7 +379,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports) {
 
 // Exports
@@ -383,7 +389,7 @@ module.exports = {
 
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -469,7 +475,7 @@ const actions = {
 };
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -494,7 +500,25 @@ const mutations = {
 };
 
 /***/ }),
-/* 19 */
+/* 20 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "actions", function() { return actions; });
+// import {get} from "@utils/request";
+const actions = {
+  getNews({
+    rootState
+  }, data) {
+    return this.$axios.get("/api/test/?SearchWordRecommend"); // const url = "";
+    // return get(url);
+  }
+
+};
+
+/***/ }),
+/* 21 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1205,7 +1229,7 @@ async function serverPrefetch() {
 
 });
 // EXTERNAL MODULE: external "vuex"
-var external_vuex_ = __webpack_require__(4);
+var external_vuex_ = __webpack_require__(3);
 var external_vuex_default = /*#__PURE__*/__webpack_require__.n(external_vuex_);
 
 // EXTERNAL MODULE: external "vue-meta"
@@ -1301,9 +1325,9 @@ function shouldScrollToTop(route) {
 
 
 
-const _a17ca718 = () => interopDefault(__webpack_require__.e(/* import() | pages/Test */ 3).then(__webpack_require__.bind(null, 21)));
+const _69a3cf64 = () => interopDefault(__webpack_require__.e(/* import() | pages/test */ 4).then(__webpack_require__.bind(null, 22)));
 
-const _4b510500 = () => interopDefault(__webpack_require__.e(/* import() | pages/index */ 4).then(__webpack_require__.bind(null, 22)));
+const _38a84f20 = () => interopDefault(__webpack_require__.e(/* import() | pages/index */ 3).then(__webpack_require__.bind(null, 23)));
 
 const emptyFn = () => {};
 
@@ -1315,12 +1339,12 @@ const routerOptions = {
   linkExactActiveClass: 'nuxt-link-exact-active',
   scrollBehavior: router_scrollBehavior,
   routes: [{
-    path: "/Test",
-    component: _a17ca718,
-    name: "Test"
+    path: "/test",
+    component: _69a3cf64,
+    name: "test"
   }, {
     path: "/",
-    component: _4b510500,
+    component: _38a84f20,
     name: "index"
   }],
   fallback: false
@@ -1496,7 +1520,7 @@ var staticRenderFns = []
 // CONCATENATED MODULE: ./dist/components/nuxt-error.vue?vue&type=script&lang=js&
  /* harmony default export */ var components_nuxt_errorvue_type_script_lang_js_ = (nuxt_errorvue_type_script_lang_js_); 
 // EXTERNAL MODULE: ./node_modules/vue-loader/lib/runtime/componentNormalizer.js
-var componentNormalizer = __webpack_require__(3);
+var componentNormalizer = __webpack_require__(2);
 
 // CONCATENATED MODULE: ./dist/components/nuxt-error.vue
 
@@ -1504,7 +1528,7 @@ var componentNormalizer = __webpack_require__(3);
 
 function injectStyles (context) {
   
-  var style0 = __webpack_require__(14)
+  var style0 = __webpack_require__(15)
 if (style0.__inject__) style0.__inject__(context)
 
 }
@@ -1518,7 +1542,7 @@ var nuxt_error_component = Object(componentNormalizer["a" /* default */])(
   false,
   injectStyles,
   null,
-  "73ce40d3"
+  "71ce0509"
   
 )
 
@@ -1808,7 +1832,7 @@ var nuxt_loading_render, nuxt_loading_staticRenderFns
 
 function nuxt_loading_injectStyles (context) {
   
-  var style0 = __webpack_require__(15)
+  var style0 = __webpack_require__(16)
 if (style0.__inject__) style0.__inject__(context)
 
 }
@@ -1822,13 +1846,13 @@ var nuxt_loading_component = Object(componentNormalizer["a" /* default */])(
   false,
   nuxt_loading_injectStyles,
   null,
-  "2f985547"
+  "a6903806"
   
 )
 
 /* harmony default export */ var nuxt_loading = (nuxt_loading_component.exports);
 // EXTERNAL MODULE: ./styles/index.scss
-var styles = __webpack_require__(16);
+var styles = __webpack_require__(17);
 
 // CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./dist/layouts/default.vue?vue&type=template&id=a16422ca&
 var defaultvue_type_template_id_a16422ca_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('Nuxt')}
@@ -1851,7 +1875,7 @@ var default_component = Object(componentNormalizer["a" /* default */])(
   false,
   null,
   null,
-  "2b6eab37"
+  "f6696026"
   
 )
 
@@ -2045,11 +2069,11 @@ const VUEX_PROPERTIES = ['state', 'getters', 'actions', 'mutations'];
 let store_store = {};
 
 (function updateModules() {
-  store_store = normalizeRoot(__webpack_require__(17), 'store/index.js'); // If store is an exported method = classic mode (deprecated)
+  store_store = normalizeRoot(__webpack_require__(18), 'store/index.js'); // If store is an exported method = classic mode (deprecated)
   // Enforce store modules
 
   store_store.modules = store_store.modules || {};
-  resolveStoreModules(__webpack_require__(18), 'device.js');
+  resolveStoreModules(__webpack_require__(19), 'device.js');
   resolveStoreModules(__webpack_require__(20), 'test.js'); // If the environment supports hot reloading...
 })(); // createStore
 
@@ -2165,8 +2189,8 @@ function mergeProperty(storeModule, moduleData, property) {
   }
 }
 // CONCATENATED MODULE: ./dist/components/index.js
-const NuxtLogo = () => __webpack_require__.e(/* import() | components/nuxt-logo */ 1).then(__webpack_require__.bind(null, 23)).then(c => wrapFunctional(c.default || c));
-const Tutorial = () => __webpack_require__.e(/* import() | components/tutorial */ 2).then(__webpack_require__.bind(null, 24)).then(c => wrapFunctional(c.default || c)); // nuxt/nuxt.js#8607
+const NuxtLogo = () => __webpack_require__.e(/* import() | components/nuxt-logo */ 1).then(__webpack_require__.bind(null, 24)).then(c => wrapFunctional(c.default || c));
+const Tutorial = () => __webpack_require__.e(/* import() | components/tutorial */ 2).then(__webpack_require__.bind(null, 25)).then(c => wrapFunctional(c.default || c)); // nuxt/nuxt.js#8607
 
 function wrapFunctional(options) {
   if (!options || !options.functional) {
@@ -2205,6 +2229,223 @@ for (const name in components_namespaceObject) {
   external_vue_default.a.component(name, components_namespaceObject[name]);
   external_vue_default.a.component('Lazy' + name, components_namespaceObject[name]);
 }
+// EXTERNAL MODULE: external "axios"
+var external_axios_ = __webpack_require__(4);
+var external_axios_default = /*#__PURE__*/__webpack_require__.n(external_axios_);
+
+// EXTERNAL MODULE: external "defu"
+var external_defu_ = __webpack_require__(12);
+var external_defu_default = /*#__PURE__*/__webpack_require__.n(external_defu_);
+
+// CONCATENATED MODULE: ./dist/axios.js
+
+ // Axios.prototype cannot be modified
+
+const axiosExtra = {
+  setBaseURL(baseURL) {
+    this.defaults.baseURL = baseURL;
+  },
+
+  setHeader(name, value, scopes = 'common') {
+    for (const scope of Array.isArray(scopes) ? scopes : [scopes]) {
+      if (!value) {
+        delete this.defaults.headers[scope][name];
+        continue;
+      }
+
+      this.defaults.headers[scope][name] = value;
+    }
+  },
+
+  setToken(token, type, scopes = 'common') {
+    const value = !token ? null : (type ? type + ' ' : '') + token;
+    this.setHeader('Authorization', value, scopes);
+  },
+
+  onRequest(fn) {
+    this.interceptors.request.use(config => fn(config) || config);
+  },
+
+  onResponse(fn) {
+    this.interceptors.response.use(response => fn(response) || response);
+  },
+
+  onRequestError(fn) {
+    this.interceptors.request.use(undefined, error => fn(error) || Promise.reject(error));
+  },
+
+  onResponseError(fn) {
+    this.interceptors.response.use(undefined, error => fn(error) || Promise.reject(error));
+  },
+
+  onError(fn) {
+    this.onRequestError(fn);
+    this.onResponseError(fn);
+  },
+
+  create(options) {
+    return createAxiosInstance(external_defu_default()(options, this.defaults));
+  }
+
+}; // Request helpers ($get, $post, ...)
+
+for (const method of ['request', 'delete', 'get', 'head', 'options', 'post', 'put', 'patch']) {
+  axiosExtra['$' + method] = function () {
+    return this[method].apply(this, arguments).then(res => res && res.data);
+  };
+}
+
+const extendAxiosInstance = axios => {
+  for (const key in axiosExtra) {
+    axios[key] = axiosExtra[key].bind(axios);
+  }
+};
+
+const createAxiosInstance = axiosOptions => {
+  // Create new axios instance
+  const axios = external_axios_default.a.create(axiosOptions);
+  axios.CancelToken = external_axios_default.a.CancelToken;
+  axios.isCancel = external_axios_default.a.isCancel; // Extend axios proto
+
+  extendAxiosInstance(axios); // Intercept to apply default headers
+
+  axios.onRequest(config => {
+    config.headers = { ...axios.defaults.headers.common,
+      ...config.headers
+    };
+  }); // Setup interceptors
+
+  setupProgress(axios);
+  return axios;
+};
+
+const setupProgress = axios => {
+  if (true) {
+    return;
+  } // A noop loading inteterface for when $nuxt is not yet ready
+
+
+  const noopLoading = {
+    finish: () => {},
+    start: () => {},
+    fail: () => {},
+    set: () => {}
+  };
+
+  const $loading = () => {
+    const $nuxt = typeof window !== 'undefined' && window['$nuxt'];
+    return $nuxt && $nuxt.$loading && $nuxt.$loading.set ? $nuxt.$loading : noopLoading;
+  };
+
+  let currentRequests = 0;
+  axios.onRequest(config => {
+    if (config && config.progress === false) {
+      return;
+    }
+
+    currentRequests++;
+  });
+  axios.onResponse(response => {
+    if (response && response.config && response.config.progress === false) {
+      return;
+    }
+
+    currentRequests--;
+
+    if (currentRequests <= 0) {
+      currentRequests = 0;
+      $loading().finish();
+    }
+  });
+  axios.onError(error => {
+    if (error && error.config && error.config.progress === false) {
+      return;
+    }
+
+    currentRequests--;
+
+    if (external_axios_default.a.isCancel(error)) {
+      if (currentRequests <= 0) {
+        currentRequests = 0;
+        $loading().finish();
+      }
+
+      return;
+    }
+
+    $loading().fail();
+    $loading().finish();
+  });
+
+  const onProgress = e => {
+    if (!currentRequests || !e.total) {
+      return;
+    }
+
+    const progress = e.loaded * 100 / (e.total * currentRequests);
+    $loading().set(Math.min(100, progress));
+  };
+
+  axios.defaults.onUploadProgress = onProgress;
+  axios.defaults.onDownloadProgress = onProgress;
+};
+
+/* harmony default export */ var dist_axios = ((ctx, inject) => {
+  // runtimeConfig
+  const runtimeConfig = ctx.$config && ctx.$config.axios || {}; // baseURL
+
+  const baseURL =  false ? undefined : runtimeConfig.baseURL || runtimeConfig.baseUrl || process.env._AXIOS_BASE_URL_ || 'http://localhost:3000/'; // Create fresh objects for all default header scopes
+  // Axios creates only one which is shared across SSR requests!
+  // https://github.com/mzabriskie/axios/blob/master/lib/defaults.js
+
+  const headers = {
+    "common": {
+      "Accept": "application/json, text/plain, */*"
+    },
+    "delete": {},
+    "get": {},
+    "head": {},
+    "post": {},
+    "put": {},
+    "patch": {}
+  };
+  const axiosOptions = {
+    baseURL,
+    headers
+  }; // Proxy SSR request headers headers
+
+  if ( true && ctx.req && ctx.req.headers) {
+    const reqHeaders = { ...ctx.req.headers
+    };
+
+    for (const h of ["accept", "cf-connecting-ip", "cf-ray", "content-length", "content-md5", "content-type", "host", "x-forwarded-host", "x-forwarded-port", "x-forwarded-proto"]) {
+      delete reqHeaders[h];
+    }
+
+    axiosOptions.headers.common = { ...reqHeaders,
+      ...axiosOptions.headers.common
+    };
+  }
+
+  if (true) {
+    // Don't accept brotli encoding because Node can't parse it
+    axiosOptions.headers.common['accept-encoding'] = 'gzip, deflate';
+  }
+
+  const axios = createAxiosInstance(axiosOptions); // Inject axios to the context as $axios
+
+  ctx.$axios = axios;
+  inject('axios', axios);
+});
+// CONCATENATED MODULE: ./src/plugins/axios.js
+function axios_axios({
+  $axios
+}) {
+  $axios.defaults.timeout = 15000;
+  $axios.onResponse(response => {
+    return response.data;
+  });
+}
 // CONCATENATED MODULE: ./dist/index.js
 
 
@@ -2221,6 +2462,10 @@ for (const name in components_namespaceObject) {
 /* Plugins */
 
  // Source: ./components/plugin.js (mode: 'all')
+
+ // Source: ./axios.js (mode: 'all')
+
+ // Source: ../src/plugins/axios (mode: 'all')
 // Component: <ClientOnly>
 
 external_vue_default.a.component(external_vue_client_only_default.a.name, external_vue_client_only_default.a); // TODO: Remove in Nuxt 3: <NoSsr>
@@ -2446,6 +2691,14 @@ async function createApp(ssrContext, config = {}) {
 
   if (typeof /* Cannot get final name for export "default" in "./dist/components/plugin.js" (known exports: , known reexports: ) */ undefined === 'function') {
     await /* Cannot get final name for export "default" in "./dist/components/plugin.js" (known exports: , known reexports: ) */ undefined(app.context, inject);
+  }
+
+  if (typeof dist_axios === 'function') {
+    await dist_axios(app.context, inject);
+  }
+
+  if (typeof axios_axios === 'function') {
+    await axios_axios(app.context, inject);
   } // Lock enablePreview in context
 
 
@@ -2838,78 +3091,6 @@ const createNext = ssrContext => opts => {
   await beforeRender();
   return _app;
 });
-
-/***/ }),
-/* 20 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-// ESM COMPAT FLAG
-__webpack_require__.r(__webpack_exports__);
-
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, "actions", function() { return /* binding */ actions; });
-
-// EXTERNAL MODULE: external "axios"
-var external_axios_ = __webpack_require__(2);
-var external_axios_default = /*#__PURE__*/__webpack_require__.n(external_axios_);
-
-// CONCATENATED MODULE: ./src/utils/request.js
-
-external_axios_default.a.defaults.timeout = 15000; // http request 拦截器
-
-external_axios_default.a.interceptors.request.use(config => config, err => Promise.reject(err)); // http response 拦截器
-
-external_axios_default.a.interceptors.response.use(response => response, err => Promise.reject(err)); // 配置基础接口
-
-external_axios_default.a.defaults.baseURL =  false ? undefined : "http://localhost:3000"; // get请求
-
-const get = async (url, params = {}) => {
-  const paramsList = [];
-  Object.keys(params).forEach(key => {
-    if (key != "debugService") {
-      paramsList.push(`${key}=${params[key]}`);
-    }
-  });
-  const paramsStr = paramsList.join("&");
-
-  if (params.debugService == 1) {
-    return `${url}?${paramsStr}`;
-  }
-
-  const res = await external_axios_default.a.get(`${url}?${paramsStr}`).then(res => res.data);
-  return res;
-}; // post请求
-
-const post = async (url, body = {}, headers = {}) => {
-  if (body.debugService == 1) {
-    Reflect.deleteProperty(body, "debugService");
-    return {
-      url: url,
-      body: body
-    };
-  }
-
-  Reflect.deleteProperty(body, "debugService");
-  const res = await external_axios_default.a.post(url, body, {
-    headers: {
-      'Content-Type': 'application/json',
-      ...headers
-    }
-  }).then(res => res.data);
-  return res;
-};
-// CONCATENATED MODULE: ./src/store/test.js
-
-const actions = {
-  getNews({
-    rootState
-  }, data) {
-    const url = "/api/test/news";
-    return get(url);
-  }
-
-};
 
 /***/ })
 /******/ ]);

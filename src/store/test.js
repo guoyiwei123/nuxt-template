@@ -1,7 +1,8 @@
-import {get} from "@utils/request";
+// import {get} from "@utils/request";
 export const actions = {
     getNews({rootState}, data){
-        const url = "/api/test/news";
-        return get(url);
+        return this.$axios.get("/api/test/?SearchWordRecommend");
+        // const url = "";
+        // return get(url);
     }
 }
