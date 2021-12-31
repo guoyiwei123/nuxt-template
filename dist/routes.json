@@ -3,14 +3,12 @@
     "name": "test",
     "path": "/test",
     "component": "/Users/guoyiwei/Documents/projects/nuxt-template/src/pages/test.vue",
-    "chunkName": "pages/test",
-    "_name": "_69a3cf64"
+    "chunkName": "pages/test"
   },
   {
     "name": "index",
     "path": "/",
     "component": "/Users/guoyiwei/Documents/projects/nuxt-template/src/pages/index.vue",
-    "chunkName": "pages/index",
-    "_name": "_38a84f20"
+    "chunkName": "pages/index"
   }
 ]

@@ -104,7 +104,7 @@ module.exports =
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "/_nuxt/";
+/******/ 	__webpack_require__.p = "/extend/_nuxt/";
 /******/
 /******/ 	// uncaught error handler for webpack runtime
 /******/ 	__webpack_require__.oe = function(err) {
@@ -739,9 +739,7 @@ async function setContext(app, context) {
       payload: context.payload,
       error: context.error,
       base: app.router.options.base,
-      env: {
-        "baseUrl": "http://localhost:3000"
-      }
+      env: {}
     }; // Only set once
 
     if (context.req) {
@@ -1332,7 +1330,7 @@ const emptyFn = () => {};
 external_vue_default.a.use(external_vue_router_default.a);
 const routerOptions = {
   mode: 'history',
-  base: '/',
+  base: '/extend/',
   linkActiveClass: 'nuxt-link-active',
   linkExactActiveClass: 'nuxt-link-exact-active',
   scrollBehavior: router_scrollBehavior,
@@ -2392,7 +2390,7 @@ const setupProgress = axios => {
   // runtimeConfig
   const runtimeConfig = ctx.$config && ctx.$config.axios || {}; // baseURL
 
-  const baseURL =  false ? undefined : runtimeConfig.baseURL || runtimeConfig.baseUrl || process.env._AXIOS_BASE_URL_ || 'http://localhost:3000/'; // Create fresh objects for all default header scopes
+  const baseURL =  false ? undefined : runtimeConfig.baseURL || runtimeConfig.baseUrl || process.env._AXIOS_BASE_URL_ || 'http://localhost:3000/extend'; // Create fresh objects for all default header scopes
   // Axios creates only one which is shared across SSR requests!
   // https://github.com/mzabriskie/axios/blob/master/lib/defaults.js
 
@@ -2436,14 +2434,14 @@ const setupProgress = axios => {
   inject('axios', axios);
 });
 // CONCATENATED MODULE: ./src/plugins/axios.js
-function axios_axios({
+/* harmony default export */ var plugins_axios = (function ({
   $axios
 }) {
   $axios.defaults.timeout = 15000;
   $axios.onResponse(response => {
     return response.data;
   });
-}
+});
 // CONCATENATED MODULE: ./dist/index.js
 
 
@@ -2695,8 +2693,8 @@ async function createApp(ssrContext, config = {}) {
     await dist_axios(app.context, inject);
   }
 
-  if (typeof axios_axios === 'function') {
-    await axios_axios(app.context, inject);
+  if (typeof plugins_axios === 'function') {
+    await plugins_axios(app.context, inject);
   } // Lock enablePreview in context
 
 
@@ -2796,7 +2794,7 @@ const createNext = ssrContext => opts => {
 
   let fullPath = Object(external_ufo_["withQuery"])(opts.path, opts.query);
   const $config = ssrContext.runtimeConfig || {};
-  const routerBase = $config._app && $config._app.basePath || '/';
+  const routerBase = $config._app && $config._app.basePath || '/extend/';
 
   if (!fullPath.startsWith('http') && routerBase !== '/' && !fullPath.startsWith(routerBase)) {
     fullPath = Object(external_ufo_["joinURL"])(routerBase, fullPath);

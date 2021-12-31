@@ -1,6 +1,6 @@
 const serveStatic = require("serve-static");
 const { resolve } = require("path");
-const basePath = "";
+const basePath = "/extend";
 const port = 3000;
 module.exports = {
     head: {
@@ -30,7 +30,6 @@ module.exports = {
         "@utils": resolve(__dirname, "./src/utils"),
         "@store": resolve(__dirname, "./src/store"),
         "@config": resolve(__dirname, "./src/config"),
-        "@models": resolve(__dirname, "./src/models")
     },
     // 打包配置
     build: {
@@ -68,10 +67,6 @@ module.exports = {
     loading: {
         color: "blue"
     },
-    // 环境变量
-    env: {
-        baseUrl: process.env.BASE_URL || `http://localhost:${port}${basePath}`
-    },
     // 模块
     modules: [
         "@nuxtjs/axios"
@@ -80,9 +75,10 @@ module.exports = {
         '~/plugins/axios'
     ],
     axios: {
-        proxy: true // Can be also an object with default options
+        proxy: true, // Can be also an object with default options
+        prefix: basePath,
     },
     proxy: {
-        "/api/test/": {target: "http://abbos.api.tongbu.com/web/responsive", pathRewrite: {"^/api/test": ""}}
+        [`${basePath}/api/test/`]: {target: "http://abbos.api.tongbu.com/web/responsive", pathRewrite: {"^.*?/api/test": ""}}
     }
 }
