@@ -1,6 +1,6 @@
 const serveStatic = require("serve-static");
 const { resolve } = require("path");
-const basePath = "/extend";
+const basePath = "";
 const port = 3000;
 module.exports = {
     head: {
