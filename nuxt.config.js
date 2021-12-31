@@ -54,7 +54,6 @@ module.exports = {
     },
     // 服务器端渲染中间件
     serverMiddleware: [
-        // { path: '/api', handler: resolve(__dirname, "./apis/index.js") },
         { path: '/static', handler: serveStatic(__dirname + '/static') }
     ],
     // css配置
