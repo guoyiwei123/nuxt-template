@@ -506,13 +506,11 @@ const mutations = {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "actions", function() { return actions; });
-// import {get} from "@utils/request";
 const actions = {
   getNews({
     rootState
   }, data) {
-    return this.$axios.get("/api/test/?SearchWordRecommend"); // const url = "";
-    // return get(url);
+    return this.$axios.get("/api/test/?SearchWordRecommend");
   }
 
 };
