@@ -7,11 +7,14 @@
 
 <script>
 export default {
-	async asyncData({store}) {
-        const res = await store.dispatch("test/getNews", {a: 1});
-        return {
-            testData: res
-        }
+	async asyncData({store, app}) {
+        // await app.$axios.get("/abbos?GetPopularApp").then(res => {
+        //     console.log(res);
+        // })
+        await app.$models.app.getAppList().then(res => {
+            console.log(res);
+        });
+        return {};
 	},
 	head() {
 		return {
@@ -35,10 +38,13 @@ export default {
     },
     methods: {
         getData(){
-            this.$store.dispatch("test/getNews", {a: 1}).then(res => {
+            this.$models.app.getAppList().then(res => {
                 console.log(res);
             });
         }
     },
 };
 </script>
+<style lang="scss" scoped>
+    @import "~/assets/scss/index.scss";
+</style>

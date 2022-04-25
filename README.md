@@ -1,4 +1,4 @@
-# www.pandahelp.vip官网
+# nuxt
 
 ## 命令说明
 

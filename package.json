@@ -4,15 +4,16 @@
   "private": true,
   "scripts": {
     "build": "nuxt build",
-    "start": "NUXT_NODE_ENV=local node server.js",
-    "serve": "NUXT_NODE_ENV=test node server.js"
+    "dev": "NODE_ENV=local node server.js",
+    "serve": "NODE_ENV=test node server.js"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.13.6",
     "core-js": "^3.15.1",
     "koa": "^2.13.4",
+    "koa-body": "^5.0.0",
     "koa-router": "^10.1.1",
-    "nuxt": "^2.15.7"
+    "nuxt": "^2.15.8"
   },
   "devDependencies": {
     "fibers": "^5.0.0",
