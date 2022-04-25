@@ -2687,15 +2687,30 @@ const setupProgress = axios => {
 });
 // CONCATENATED MODULE: ./src/plugins/axios.js
 /* harmony default export */ var plugins_axios = (function ({
-  $axios
+  $axios,
+  $config
 }) {
   $axios.defaults.timeout = 15000;
   $axios.onError(error => {
     console.log(error);
   });
   $axios.onResponse(response => {
-    console.log(response);
-    return response.data;
+    const {
+      apis
+    } = $config;
+    const {
+      config,
+      data
+    } = response; // 获取路由
+
+    const route = config.url.replace(/^\/|(\?.*)/g, ""); // 获取api
+
+    const api = apis[route]; // 截取参数
+
+    const search = config.url.split("?")[1]; // 拼接完整api
+
+    console.log(`${api}${search ? `?${search}` : ""}`);
+    return data;
   });
 });
 // CONCATENATED MODULE: ./src/models/app.js

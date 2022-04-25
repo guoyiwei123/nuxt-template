@@ -8,8 +8,10 @@ const baseAPIPath = "/api";
 const port = 3000;
 const env = process.env.NODE_ENV != "production"?"test": "prod";
 const proxy = {};
+const apis = {};
 Object.keys(baseAPIs).forEach(key => {
     const url = baseAPIs[key][env];
+    apis[key] = url;
     proxy[`${baseAPIPath}/${key}`] = {
         target: url, 
         pathRewrite: { 
@@ -89,6 +91,12 @@ module.exports = {
         "~/plugins/axios",
         "~/plugins/request"
     ],
+    publicRuntimeConfig: {
+        apis
+    },
+    privateRuntimeConfig: {
+        apis
+    },
     axios: {
         proxy: true, // Can be also an object with default options,
         prefix: baseAPIPath
