@@ -81,9 +81,6 @@ module.exports = {
         // 自定义路由配置
         routes: []
     },
-    // css: [
-    //     '@/assets/scss/index.scss'
-    // ],
     // 路由跳转加载样式
     loading: {
         color: 'blue'

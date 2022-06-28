@@ -308,7 +308,7 @@ module.exports = require("defu");
 /* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(17);
+module.exports = __webpack_require__(16);
 
 
 /***/ }),
@@ -335,37 +335,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 /* 16 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "state", function() { return state; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mutations", function() { return mutations; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "actions", function() { return actions; });
-const state = () => ({
-  // ip
-  ip: ""
-});
-const mutations = {
-  // 设置系统信息
-  setIp: (state, {
-    ip
-  }) => {
-    state.ip = ip;
-  }
-};
-const actions = {
-  // 服务端渲染前执行
-  nuxtServerInit({
-    commit
-  }, {
-    req
-  }) {}
-
-};
-
-/***/ }),
-/* 17 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1865,7 +1834,7 @@ external_vue_default.a.use(external_vuex_default.a);
 let store_store = {};
 
 (function updateModules() {
-  store_store = normalizeRoot(__webpack_require__(16), 'store/index.js'); // If store is an exported method = classic mode (deprecated)
+  store_store = normalizeRoot(__webpack_require__(17), 'store/index.js'); // If store is an exported method = classic mode (deprecated)
   // Enforce store modules
 
   store_store.modules = store_store.modules || {}; // If the environment supports hot reloading...
@@ -2117,7 +2086,7 @@ const setupProgress = axios => {
 /* harmony default export */ var plugins_axios = (function ({
   $axios,
   $config,
-  error
+  error: nuxtError
 }) {
   // 获取真实接口API
   const getRealAPIUrl = url => {
@@ -2133,33 +2102,33 @@ const setupProgress = axios => {
   };
 
   $axios.defaults.timeout = 15000;
-  $axios.onError(err => {
+  $axios.onError(error => {
     const {
       url,
       method,
       params,
       data
-    } = err.config;
-    console.log("真实接口api: ", getRealAPIUrl(url));
-    console.log("请求方式:", method);
-    console.log("参数: ", data || JSON.stringify(params || {}));
+    } = error.config;
+    let message = "";
+    message += `接口url: ${getRealAPIUrl(url)}\n`;
+    message += `请求方式: ${method}\n`;
+    message += `请求参数: ${data || JSON.stringify(params || {})}\n`;
+    message += `响应码: ${error.response.status}\n`;
+    message += `错误信息: ${error.message}`;
+    nuxtError({
+      statusCode: 500,
+      message
+    });
+    return Promise.resolve(false);
   });
   $axios.onResponse(response => {
     const {
-      apis
-    } = $config;
-    const {
-      config,
       data
-    } = response; // 获取路由
-
-    const route = config.url.replace(/^\/|(\?.*)/g, ""); // 获取api
-
-    const api = apis[route]; // 截取参数
-
-    const search = config.url.split("?")[1]; // 拼接完整api
-
-    console.log(`${api}${search ? `?${search}` : ""}`);
+    } = response;
+    nuxtError({
+      statusCode: 404,
+      message: "123"
+    });
     return data;
   });
 });
@@ -2802,6 +2771,59 @@ const createNext = ssrContext => opts => {
   await beforeRender();
   return _app;
 });
+
+/***/ }),
+/* 17 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+// ESM COMPAT FLAG
+__webpack_require__.r(__webpack_exports__);
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, "state", function() { return /* binding */ state; });
+__webpack_require__.d(__webpack_exports__, "mutations", function() { return /* binding */ mutations; });
+__webpack_require__.d(__webpack_exports__, "actions", function() { return /* binding */ actions; });
+
+// CONCATENATED MODULE: ./src/utils/server.js
+/**
+ * 获取客户端ip
+ * @param req {Object} 请求对象
+ * **/
+const getClientIP = req => {
+  /**
+   * 优先级: 反向代理ip -> 连接远程ip -> socket ip
+   * **/
+  return req.headers['x-real-ip'] || req.headers['x-forwarded-for'] && req.headers['x-forwarded-for'].split(",")[0] || req.connection.remoteAddress || req.socket.remoteAddress || req.connection.socket.remoteAddress;
+};
+// CONCATENATED MODULE: ./src/store/index.js
+
+const state = () => ({
+  // ip
+  ip: ""
+});
+const mutations = {
+  // 设置ip信息
+  setIp: (state, {
+    ip
+  }) => {
+    state.ip = ip;
+  }
+};
+const actions = {
+  // 服务端渲染前执行
+  nuxtServerInit({
+    commit
+  }, {
+    req
+  }) {
+    const ip = getClientIP(req);
+    ip && commit("setIp", {
+      ip
+    });
+  }
+
+};
 
 /***/ })
 /******/ ]);

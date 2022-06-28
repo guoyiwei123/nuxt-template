@@ -1,4 +1,4 @@
-export default function ({ $axios, $config, error}) {
+export default function ({ $axios, $config, error: nuxtError}) {
     // 获取真实接口API
     const getRealAPIUrl = (url) => {
         const {apis} = $config;
@@ -10,23 +10,22 @@ export default function ({ $axios, $config, error}) {
         return `${api}${url.replace(`/${route}`, '')}`;
     }
     $axios.defaults.timeout = 15000;
-    $axios.onError(err => {
-        const {url, method, params, data} = err.config;
-        console.log("真实接口api: ", getRealAPIUrl(url));
-        console.log("请求方式:", method);
-        console.log("参数: ", data || JSON.stringify(params || {}));
+    $axios.onError(error => {
+        const {url, method, params, data} = error.config;
+        let message = "";
+        message += `接口url: ${ getRealAPIUrl(url)}\n`;
+        message += `请求方式: ${method}\n`;
+        message += `请求参数: ${data || JSON.stringify(params || {})}\n`;
+        message += `响应码: ${error.response.status}\n`
+        message += `错误信息: ${error.message}`
+        nuxtError({
+            statusCode: 500,
+            message
+        });
+        return Promise.resolve(false);
     })
     $axios.onResponse(response => {
-        const {apis} = $config;
-        const {config, data} = response;
-        // 获取路由
-        const route = config.url.replace(/^\/|(\?.*)/g, "");
-        // 获取api
-        const api = apis[route];
-        // 截取参数
-        const search = config.url.split("?")[1];
-        // 拼接完整api
-        console.log(`${api}${search?`?${search}`: ""}`)
+        const {data} = response;
         return data;
     })
 }
