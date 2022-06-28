@@ -38,10 +38,10 @@ $ npm run serve
         -   utils 工具方法目录
 -   static 静态资源目录
 -   nuxt.config.js nuxt 配置文件
--   server.js 启动入口文件
+-   server.js 自定义服务器入口, 可删除
 ```
 ## 注意事项
-### 环境变量 `NUXT_NODE_ENV`
+### 环境变量 `NODE_ENV`
 由于在执行过程中,nuxt会把NODE_ENV强制赋予`production`,导致接口配置无法区分正式和测试环境，这里新建使用自定义字段`NUXT_NODE_ENV`
 环境区分以下三种:
 -   `local`, 本地环境，本地开发时使用，会执行打包逻辑

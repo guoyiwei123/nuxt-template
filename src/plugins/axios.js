@@ -1,7 +1,20 @@
-export default function ({ $axios, $config}) {
+export default function ({ $axios, $config, error}) {
+    // 获取真实接口API
+    const getRealAPIUrl = (url) => {
+        const {apis} = $config;
+        // 获取路由
+        const routes = url.match(/^\/([\w|_|-]+)/);
+        const route = routes && routes[1] || '';
+        // 获取api
+        const api = apis[route];
+        return `${api}${url.replace(`/${route}`, '')}`;
+    }
     $axios.defaults.timeout = 15000;
-    $axios.onError(error => {
-        console.log(error);
+    $axios.onError(err => {
+        const {url, method, params, data} = err.config;
+        console.log("真实接口api: ", getRealAPIUrl(url));
+        console.log("请求方式:", method);
+        console.log("参数: ", data || JSON.stringify(params || {}));
     })
     $axios.onResponse(response => {
         const {apis} = $config;

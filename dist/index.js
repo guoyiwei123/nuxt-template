@@ -5,7 +5,7 @@ import ClientOnly from 'vue-client-only'
 import NoSsr from 'vue-no-ssr'
 import { createRouter } from './router.js'
 import NuxtChild from './components/nuxt-child.js'
-import NuxtError from './components/nuxt-error.vue'
+import NuxtError from '../src/layouts/error.vue'
 import Nuxt from './components/nuxt.js'
 import App from './App.js'
 import { setContext, getLocation, getRouteData, normalizeError } from './utils'
@@ -15,7 +15,6 @@ import { createStore } from './store.js'
 
 import nuxt_plugin_axios_025811c6 from 'nuxt_plugin_axios_025811c6' // Source: ./axios.js (mode: 'all')
 import nuxt_plugin_axios_3566aa80 from 'nuxt_plugin_axios_3566aa80' // Source: ../src/plugins/axios (mode: 'all')
-import nuxt_plugin_request_281e2659 from 'nuxt_plugin_request_281e2659' // Source: ../src/plugins/request (mode: 'all')
 
 // Component: <ClientOnly>
 Vue.component(ClientOnly.name, ClientOnly)
@@ -218,10 +217,6 @@ async function createApp(ssrContext, config = {}) {
 
   if (typeof nuxt_plugin_axios_3566aa80 === 'function') {
     await nuxt_plugin_axios_3566aa80(app.context, inject)
-  }
-
-  if (typeof nuxt_plugin_request_281e2659 === 'function') {
-    await nuxt_plugin_request_281e2659(app.context, inject)
   }
 
   // Lock enablePreview in context

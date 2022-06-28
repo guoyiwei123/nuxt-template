@@ -1,5 +1,5 @@
 const Koa = require('koa');
-const { Nuxt, Builder } = require("nuxt");
+const { Nuxt } = require("nuxt");
 const config = require("./nuxt.config");
 async function start() {
     // 实例化koa对象
@@ -7,11 +7,6 @@ async function start() {
     // 实例化nuxt对象
     const nuxt = new Nuxt(config);
     await nuxt.ready();
-    // 判断是否为本地环境
-    if (config.dev) {
-        const builder = new Builder(nuxt);
-        builder.build();
-    }
     app.use((ctx) => {
         ctx.status = 200;
         ctx.respond = false;

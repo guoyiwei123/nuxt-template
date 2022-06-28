@@ -1,6 +1,6 @@
 module.exports = {
     "abbos": {
-        test: "http://abbos.api.tongbu.com/web/responsive",
-        prod: "http://abbos.api.tongbu.com/web/responsive"
+        production: "http://abbos.api.tongbu.com/web/responsive",
+        test: "http://abbos.api.tongbu.com/web/responsive"
     }
 }

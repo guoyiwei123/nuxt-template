@@ -2,14 +2,8 @@ import Vue from 'vue'
 import { decode, parsePath, withoutBase, withoutTrailingSlash, normalizeURL } from 'ufo'
 
 import { getMatchedComponentsInstances, getChildrenComponentInstancesUsingFetch, promisify, globalHandleError, urlJoin, sanitizeComponent } from './utils'
-import NuxtError from './components/nuxt-error.vue'
+import NuxtError from '../src/layouts/error.vue'
 import NuxtLoading from './components/nuxt-loading.vue'
-
-import '../src/assets/scss/commons/reset.scss'
-
-import '../src/assets/scss/commons/base.scss'
-
-import '../src/assets/scss/commons/px2rem.scss'
 
 import _6f6c098b from '../src/layouts/default.vue'
 
