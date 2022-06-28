@@ -1,0 +1,2 @@
+serverMiddleware.0.path=/_ipx
+serverMiddleware.0.handler=~~/dist/dist/api/ipx.js

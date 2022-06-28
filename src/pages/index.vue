@@ -1,13 +1,13 @@
 <template>
     <div class="home">
-        home
+        <div style="height: 2000px"></div>
+        <nuxt-img format="webp" src="/icon_monthvip.png" loading="lazy" alt="123"/>
     </div>
 </template>
 <script>
 export default {
     async asyncData({$axios}){
-        const res = await $axios.get("/abbos");
-        console.log(res);
+
     }
 }
 </script>

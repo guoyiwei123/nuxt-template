@@ -44,6 +44,14 @@ $ npm run serve
 ### 环境变量 `NODE_ENV`
 由于在执行过程中,nuxt会把NODE_ENV强制赋予`production`,导致接口配置无法区分正式和测试环境，这里新建使用自定义字段`NUXT_NODE_ENV`
 环境区分以下三种:
--   `local`, 本地环境，本地开发时使用，会执行打包逻辑
--   `test`, 测试环境，服务会走测试环境接口，不会执行打包逻辑
--   `prod`, 正式环境，服务会走正式环境接口，不会执行打包逻辑
+- `local`, 本地环境，本地开发时使用，会执行打包逻辑
+- `test`, 测试环境，服务会走测试环境接口，不会执行打包逻辑
+- `prod`, 正式环境，服务会走正式环境接口，不会执行打包逻辑
+
+## 安装sharp异常解决方案
+设置npm环境常量
+```
+npm config set sharp_binary_host "https://npmmirror.com/mirrors/sharp"
+npm config set sharp_libvips_binary_host "https://npmmirror.com/mirrors/sharp-libvips"
+npm install sharp
+```
