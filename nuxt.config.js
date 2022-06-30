@@ -1,4 +1,5 @@
 const {resolve} = require('path');
+const TerserJsPlugin = require('terser-webpack-plugin');
 const baseAPIs = require('./src/config/api');
 // 基础路径
 const basePath = '';
@@ -60,6 +61,26 @@ module.exports = {
             plugins: {
                 'autoprefixer': {}
             }
+        },
+
+        optimization: {
+            minimizer: [
+                new TerserJsPlugin({
+                    parallel: true
+                })
+            ],
+            splitChunks: {
+                minSize: 200 * 1024,
+                cacheGroups: {
+                    vendor: {
+                        name: "vendor",
+                        priority: 1,
+                        test: /node_modules/,
+                        minSize: 200 * 1024,
+                        minChunks: 1
+                    }
+                }
+            }
         }
     },
     // 应用源码目录
@@ -107,6 +128,9 @@ module.exports = {
         prefix: baseAPIPath
     },
     proxy,
+    render: {
+        resourceHints: false
+    },
     image: {
         screens: {
             xs: 320,
