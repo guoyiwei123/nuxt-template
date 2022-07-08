@@ -50,19 +50,21 @@ module.exports = {
         '~config': resolve(__dirname, './src/config'),
         '~assets': resolve(__dirname, './src/assets')
     },
+    css: [
+        '~/assets/scss/index.scss'
+    ],
     // 打包配置
     build: {
-        extractCSS: prodEnv,
-        cache: !prodEnv,
+        extractCSS: false,
+        // cache: !prodEnv,
         // 开启多线程打包
-        parallel: true,
+        // parallel: true,
         devtools: prodEnv,
         postcss: {
             plugins: {
                 'autoprefixer': {}
             }
         },
-
         optimization: {
             minimizer: [
                 new TerserJsPlugin({
@@ -70,16 +72,8 @@ module.exports = {
                 })
             ],
             splitChunks: {
-                minSize: 200 * 1024,
-                cacheGroups: {
-                    vendor: {
-                        name: "vendor",
-                        priority: 1,
-                        test: /node_modules/,
-                        minSize: 200 * 1024,
-                        minChunks: 1
-                    }
-                }
+                chunks: "all",
+                minSize: 500 * 1024 * 1024
             }
         }
     },
@@ -93,6 +87,7 @@ module.exports = {
     },
     // 服务器配置
     server: {
+        host: '0.0.0.0',
         port
     },
     // 路由配置
@@ -128,9 +123,6 @@ module.exports = {
         prefix: baseAPIPath
     },
     proxy,
-    render: {
-        resourceHints: false
-    },
     image: {
         screens: {
             xs: 320,

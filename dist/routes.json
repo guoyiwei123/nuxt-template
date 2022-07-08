@@ -1,10 +1,17 @@
 [
   {
-    "name": "test",
-    "path": "/test",
-    "component": "/Users/guoyiwei/Documents/projects/nuxt-template/src/pages/test.vue",
-    "chunkName": "pages/test",
-    "_name": "_69a3cf64"
+    "name": "test-hollow",
+    "path": "/test/hollow",
+    "component": "/Users/guoyiwei/Documents/projects/nuxt-template/src/pages/test/hollow.vue",
+    "chunkName": "pages/test/hollow",
+    "_name": "_5bd7872a"
+  },
+  {
+    "name": "test-lottie",
+    "path": "/test/lottie",
+    "component": "/Users/guoyiwei/Documents/projects/nuxt-template/src/pages/test/lottie.vue",
+    "chunkName": "pages/test/lottie",
+    "_name": "_07fdd1da"
   },
   {
     "name": "index",

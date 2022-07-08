@@ -5,6 +5,8 @@ import { getMatchedComponentsInstances, getChildrenComponentInstancesUsingFetch,
 import NuxtError from '../src/layouts/error.vue'
 import NuxtLoading from './components/nuxt-loading.vue'
 
+import '../src/assets/scss/index.scss'
+
 import _6f6c098b from '../src/layouts/default.vue'
 
 const layouts = { "_default": sanitizeComponent(_6f6c098b) }

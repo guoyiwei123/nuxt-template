@@ -1,7 +1,7 @@
 <template>
     <div class="home">
-        <div style="height: 2000px"></div>
         <nuxt-img format="webp" src="/icon_monthvip.png" loading="lazy" alt="123"/>
+        <nuxt-link to="/test">test</nuxt-link>
     </div>
 </template>
 <script>
