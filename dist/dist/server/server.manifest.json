@@ -2,12 +2,14 @@
   "entry": "server.js",
   "files": {
     "pages/index.js": "pages/index.js",
+    "pages/test/error.js": "pages/test/error.js",
     "pages/test/hollow.js": "pages/test/hollow.js",
     "pages/test/lottie.js": "pages/test/lottie.js",
     "server.js": "server.js"
   },
   "maps": {
     "pages/index.js": "pages/index.js.map",
+    "pages/test/error.js": "pages/test/error.js.map",
     "pages/test/hollow.js": "pages/test/hollow.js.map",
     "pages/test/lottie.js": "pages/test/lottie.js.map",
     "server.js": "server.js.map"

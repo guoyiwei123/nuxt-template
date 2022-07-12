@@ -6,7 +6,7 @@ export default function ({ $axios, $config, error: nuxtError}) {
         const routes = url.match(/^\/([\w|_|-]+)/);
         const route = routes && routes[1] || '';
         // 获取api
-        const api = apis[route];
+        const api = apis[route] || "";
         return `${api}${url.replace(`/${route}`, '')}`;
     }
     $axios.defaults.timeout = 15000;
@@ -16,7 +16,7 @@ export default function ({ $axios, $config, error: nuxtError}) {
         message += `接口url: ${ getRealAPIUrl(url)}\n`;
         message += `请求方式: ${method}\n`;
         message += `请求参数: ${data || JSON.stringify(params || {})}\n`;
-        message += `响应码: ${error.response.status}\n`;
+        message += `响应码: ${error?.response?.status || ""}\n`;
         message += `错误信息: ${error.message}`;
         nuxtError({
             statusCode: 500,

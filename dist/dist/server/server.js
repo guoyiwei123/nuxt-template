@@ -43,7 +43,7 @@ module.exports =
 /******/
 /******/ 		// "0" is the signal for "already loaded"
 /******/ 		if(installedChunks[chunkId] !== 0) {
-/******/ 			var chunk = require("./" + ({"1":"pages/index","2":"pages/test/hollow","3":"pages/test/lottie"}[chunkId]||chunkId) + ".js");
+/******/ 			var chunk = require("./" + ({"1":"pages/index","2":"pages/test/error","3":"pages/test/hollow","4":"pages/test/lottie"}[chunkId]||chunkId) + ".js");
 /******/ 			var moreModules = chunk.modules, chunkIds = chunk.ids;
 /******/ 			for(var moduleId in moreModules) {
 /******/ 				modules[moduleId] = moreModules[moduleId];
@@ -2461,11 +2461,13 @@ function shouldScrollToTop(route) {
 
 
 
-const _5bd7872a = () => interopDefault(__webpack_require__.e(/* import() | pages/test/hollow */ 2).then(__webpack_require__.bind(null, 31)));
+const _e2634dc6 = () => interopDefault(__webpack_require__.e(/* import() | pages/test/error */ 2).then(__webpack_require__.bind(null, 29)));
 
-const _07fdd1da = () => interopDefault(__webpack_require__.e(/* import() | pages/test/lottie */ 3).then(__webpack_require__.bind(null, 29)));
+const _5bd7872a = () => interopDefault(__webpack_require__.e(/* import() | pages/test/hollow */ 3).then(__webpack_require__.bind(null, 32)));
 
-const _38a84f20 = () => interopDefault(__webpack_require__.e(/* import() | pages/index */ 1).then(__webpack_require__.bind(null, 30)));
+const _07fdd1da = () => interopDefault(__webpack_require__.e(/* import() | pages/test/lottie */ 4).then(__webpack_require__.bind(null, 30)));
+
+const _38a84f20 = () => interopDefault(__webpack_require__.e(/* import() | pages/index */ 1).then(__webpack_require__.bind(null, 31)));
 
 const emptyFn = () => {};
 
@@ -2477,6 +2479,10 @@ const routerOptions = {
   linkExactActiveClass: 'nuxt-link-exact-active',
   scrollBehavior: router_scrollBehavior,
   routes: [{
+    path: "/test/error",
+    component: _e2634dc6,
+    name: "test-error"
+  }, {
     path: "/test/hollow",
     component: _5bd7872a,
     name: "test-hollow"
@@ -4327,12 +4333,14 @@ const setupProgress = axios => {
     const routes = url.match(/^\/([\w|_|-]+)/);
     const route = routes && routes[1] || ''; // 获取api
 
-    const api = apis[route];
+    const api = apis[route] || "";
     return `${api}${url.replace(`/${route}`, '')}`;
   };
 
   $axios.defaults.timeout = 15000;
   $axios.onError(error => {
+    var _error$response;
+
     const {
       url,
       method,
@@ -4343,7 +4351,7 @@ const setupProgress = axios => {
     message += `接口url: ${getRealAPIUrl(url)}\n`;
     message += `请求方式: ${method}\n`;
     message += `请求参数: ${data || JSON.stringify(params || {})}\n`;
-    message += `响应码: ${error.response.status}\n`;
+    message += `响应码: ${(error === null || error === void 0 ? void 0 : (_error$response = error.response) === null || _error$response === void 0 ? void 0 : _error$response.status) || ""}\n`;
     message += `错误信息: ${error.message}`;
     nuxtError({
       statusCode: 500,

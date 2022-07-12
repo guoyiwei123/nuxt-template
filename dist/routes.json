@@ -1,5 +1,12 @@
 [
   {
+    "name": "test-error",
+    "path": "/test/error",
+    "component": "/Users/guoyiwei/Documents/projects/nuxt-template/src/pages/test/error.vue",
+    "chunkName": "pages/test/error",
+    "_name": "_e2634dc6"
+  },
+  {
     "name": "test-hollow",
     "path": "/test/hollow",
     "component": "/Users/guoyiwei/Documents/projects/nuxt-template/src/pages/test/hollow.vue",
